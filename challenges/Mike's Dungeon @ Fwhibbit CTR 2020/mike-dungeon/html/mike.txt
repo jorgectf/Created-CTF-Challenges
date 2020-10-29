@@ -1,0 +1,14 @@
+My goals for 2020:
+
+Tidy my bedroom everyday.
+Finish homework everyday.
+Change administrator username from mike to hacker1337 to beat all those h4x0rs!
+Learn Javascript.
+Change password whose sha1 is 0e0776 and more random numbers to admin1337.
+Get into http cookie without httponly flag set bounty hunting.
+
+Done:
+
+Learn PHP.
+Add debug param to debug index.
+Learn Javascript.

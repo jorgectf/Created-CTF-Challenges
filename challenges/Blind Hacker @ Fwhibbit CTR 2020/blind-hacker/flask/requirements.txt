@@ -1,0 +1,6 @@
+Flask
+pyjwt
+shellescape
+pymysql
+psycopg2
+cryptography

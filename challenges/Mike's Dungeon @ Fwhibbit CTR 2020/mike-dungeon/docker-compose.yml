@@ -1,0 +1,7 @@
+version: "3.5"
+services:
+  mike-dungeon:
+    build: .
+    restart: always
+    ports:
+      - 8000:80

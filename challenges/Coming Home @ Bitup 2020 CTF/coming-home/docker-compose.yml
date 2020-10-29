@@ -1,0 +1,10 @@
+version: "3.5"
+services:
+  comming-home:
+    build: .
+    restart: always
+    environment:
+      - FLAG="bitup20{ni_pr0xy_ni_pr0sis}"
+      - THREADS=10
+    ports:
+      - 8000:5000
