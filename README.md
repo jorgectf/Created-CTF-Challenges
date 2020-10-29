@@ -6,3 +6,9 @@
 * [BeepBoop](<challenges/BeepBoop @ CybexCTF 2020>) @ CybexCTF 2020
 * [Unsafe Behaviour](<challenges/Unsafe Behaviour @ CybexCTF 2020>) @ CybexCTF 2020
 * [PotencialPartidoIntensidad](<challenges/PotencialPartidoIntensidad @ CybexCTF 2020>) @ CybexCTF 2020
+
+
+## Thanks
+
+* [@guille_hartek](https://fwhibbit.es/author/hartek) for being my sensei while learning docker <3
+* [@ulsmith](https://github.com/ulsmith) for [this resource](https://github.com/ulsmith/alpine-apache-php7/blob/master/start.sh).
