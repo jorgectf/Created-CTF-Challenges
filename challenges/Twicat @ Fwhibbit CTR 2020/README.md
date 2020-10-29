@@ -1,8 +1,8 @@
 # Twicat @ Fwhibbit CTR 2020 w/ Naivenom
 
 ## WriteUps
-[WriteUp by @GNZL00](https://t.me/fwhibbit_CTF/21482)
-[WriteUp by Staff](https://t.me/fwhibbit_CTF/21337)
+* by @GNZL00: [link](https://t.me/fwhibbit_CTF/21482)
+* [Official](https://t.me/fwhibbit_CTF/21337)
 
 ## Thanks
 
