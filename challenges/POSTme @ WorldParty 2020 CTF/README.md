@@ -1,4 +1,4 @@
 # POSTme @ WorldParty2020 CTF
 
 ## WriteUp
-* [Official]()
+* [Solver](Info/solve.sh)
