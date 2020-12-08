@@ -11,13 +11,14 @@
 
 
 ## Unreleased
-* -
+* WaloW3b @ ?
 
 ## Under-Development
 
-* WaloW3b @ ?
+* -
 
 ## Thanks
 
 * [@guille_hartek](https://fwhibbit.es/author/hartek) for being my sensei while learning docker <3
 * [@ulsmith](https://github.com/ulsmith) for [this resource](https://github.com/ulsmith/alpine-apache-php7/blob/master/start.sh).
+* [Firefox & Geckodriver Docker installation](https://hub.docker.com/r/blueimp/geckodriver/dockerfile).
