@@ -1,0 +1,15 @@
+{% extends "template.html" %} {% block content %}
+
+<center>
+    <h3 style="background-color: black; color: green;">Walo flag checker</h3>
+
+    {% if check %}
+    <h4>Tell a friend you got the flag!</h4>
+    <form>
+        <label for="msg">Message:</label><br>
+        <input type="text" id="msg" value="{{ msg }}"><br>
+      </form> 
+    {% endif %}
+</center>
+
+{% endblock %}

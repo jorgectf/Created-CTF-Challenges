@@ -1,0 +1,13 @@
+version: "3.5"
+services:
+  walow3b:
+    build: .
+    restart: always
+    environment:
+      - FLAG="CYBEX{¡wAlO_`L0v3S`_¿f0cUs?&Sam3SiT3!}"
+      - DB_HOST=127.0.0.1
+      - DB_PORT=40000
+      - BROWSER_SLEEP=15
+      - SLEEP_BETWEEN_QUEUE=1
+    ports:
+      - "2052:4000"
