@@ -1,0 +1,73 @@
+version: "3.5"
+services:
+  redis:
+    image: redis:alpine
+    networks:
+      - default
+      - isolated
+
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+    volumes:
+    - ./mysql/db.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - default
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    networks:
+      - default
+      - isolated
+
+  chrome:
+    image: selenium/standalone-chrome:latest
+    networks:
+      - isolated
+
+  browser:
+    build: browser/.
+    restart: always
+    environment:
+      BROWSER_SLEEP: 15
+      SLEEP_BETWEEN_QUEUE: 1
+      CHROME_HUB_URL: "http://chrome:4444/wd/hub"
+      ADMIN_BOT_USER: "admin"
+      ADMIN_BOT_PASSWORD: "kasjdsidfhufgb276237456274djf8dsjvvj****___" # <!> TO-REDACT
+    depends_on:
+      - chrome
+      - redis
+    networks:
+      - isolated
+
+  app:
+    build: .
+    restart: always
+    environment:
+      PYTHONDONTWRITEBYTECODE: 1
+      PYTHONUNBUFFERED: 1
+      CHALLENGE_NAME: "AgentTester"
+      CHALLENGE_FLAG: "FLAG{test-flag}" # <!> TO-REDACT
+      ADMIN_BOT_USER: "admin"
+      ADMIN_BOT_PASSWORD: "kasjdsidfhufgb276237456274djf8dsjvvj****___" # <!> TO-REDACT
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - default
+
+networks:
+    default:
+      driver: bridge
+    isolated:
+      driver: bridge

@@ -1,0 +1,10 @@
+uwsgi
+Flask
+Flask-SQLAlchemy
+Jinja2
+SQLAlchemy
+pymysql
+gevent
+Flask-uWSGI-WebSocket
+redis
+bcrypt
