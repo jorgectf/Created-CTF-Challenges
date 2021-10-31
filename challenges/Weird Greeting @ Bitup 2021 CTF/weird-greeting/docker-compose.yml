@@ -1,0 +1,9 @@
+version: "3.5"
+services:
+  weird-greeting:
+    build: .
+    restart: always
+    environment:
+      - FLAG="bitup21{d54e431cdd48707b5515fd769ce299c8}"
+    ports:
+      - 8000:5000

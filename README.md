@@ -1,5 +1,7 @@
 # Created CTF Challenges
 
+* [Weird Greeting](<challenges/Weird Greeting @ Bitup 2021 CTF>) @ Bitup 2021 CTF
+* [Friendly Greeting](<challenges/Friendly Greeting @ Bitup 2021 CTF>) @ Bitup 2021 CTF
 * [AgentTester](<challenges/AgentTester @ NahamConCTF 2021>) @ NahamConCTF 2021
 * [WaloW3b](<challenges/WaloW3b @ CybexCTF 2021>) @ CybexCTF 2021
 * [POSTme](<challenges/POSTme @ WorldParty 2020 CTF>) @ WorldParty 2020 CTF
