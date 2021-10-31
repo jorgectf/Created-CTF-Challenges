@@ -6,4 +6,4 @@ services:
     environment:
       - FLAG="bitup21{d54e431cdd48707b5515fd769ce299c8}"
     ports:
-      - 8000:5000
+      - 8000:80
