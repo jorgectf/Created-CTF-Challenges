@@ -1,6 +1,6 @@
 # Created CTF Challenges
 
-* [Taco Maker](<challenges/Taco Maker @ DEKRA CTF 2022>) @ DEKRA CTF 2022
+* [Taco Maker](<challenges/TacoMaker @ DEKRA CTF 2022>) @ DEKRA CTF 2022
 * [Weird Greeting](<challenges/Weird Greeting @ Bitup 2021 CTF>) @ Bitup 2021 CTF
 * [Friendly Greeting](<challenges/Friendly Greeting @ Bitup 2021 CTF>) @ Bitup 2021 CTF
 * [AgentTester](<challenges/AgentTester @ NahamConCTF 2021>) @ NahamConCTF 2021
