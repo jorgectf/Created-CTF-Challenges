@@ -1,0 +1,33 @@
+version: "3.6"
+services:
+  redis:
+    hostname: redis # Do NOT change
+    image: redis:alpine
+
+  selenium: # good luck if you are on M1
+    hostname: selenium # Do NOT change
+    image: selenium/standalone-chrome:latest
+    environment:
+      SE_NODE_MAX_INSTANCES: 5
+      SE_NODE_MAX_SESSIONS: 5
+
+  tacomaker:
+    hostname: tacomaker # Do NOT change
+    build: app/.
+    restart: always
+    environment:
+      FLAG: FLAG{\i-b3t-you-d%n't-gu3Ss-me}FLAG
+      REDIS_HOST: redis
+      GUNICORN_WORKERS: 10
+      GUNICORN_TIMEOUT: 15
+      PYTHONUNBUFFERED: 1 # Flush stdout
+      PYTHONDONTWRITEBYTECODE: 1 # Disable pycache
+      BROWSER_SLEEP: 45 # Time browser waits inside the website it visits (int)
+      BROWSER_THREADS: 5 # Number of parallel browsers (should be increased if players are experiencing too much delay)
+      SLEEP_BETWEEN_QUEUE: 1 # Sleep time between each browser's queue iteration
+      CHROME_HUB_URL: http://selenium:4444/wd/hub
+    ports:
+      - "4000:4000" # Do NOT change internal port
+    depends_on:
+      - selenium
+      - redis

