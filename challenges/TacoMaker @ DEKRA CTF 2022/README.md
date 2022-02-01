@@ -29,7 +29,7 @@ https://github.com/d0nutptr/sic
 
 Unexploitable because a GET parameter is needed, thus providing a `?` like `/.png?something;/../` would make `something;/../` seen as GET data. 
 
-https://claroty.com/wp-content/uploads/2022/01/Exploiting-URL-Parsing-Confusion.pdf-
+https://claroty.com/wp-content/uploads/2022/01/Exploiting-URL-Parsing-Confusion.pdf
 
 ## solver.py
 
